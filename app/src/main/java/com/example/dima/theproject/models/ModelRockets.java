@@ -11,6 +11,16 @@ public class ModelRockets {
     private String nameOfRockets;
     private String image;
     private String unixDate;
+    private String linkVideo;
+
+    public String getLinkVideo() {
+        return linkVideo;
+    }
+
+    public void setLinkVideo(String linkVideo) {
+        this.linkVideo = linkVideo;
+    }
+
 
     public String getDetails() {
         return details;

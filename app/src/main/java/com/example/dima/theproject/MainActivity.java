@@ -1,8 +1,10 @@
 package com.example.dima.theproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                     dateT.setTime(mainObject.getInt("launch_date_unix"));
 
+                    modelRockets.setLinkVideo(links.getString("article_link"));
                     modelRockets.setUnixDate("Launch Unix date: " + dateFormat.format(dateT));
                     modelRockets.setNameOfRockets(rocketInfo.getString("rocket_name"));
                     modelRockets.setDetails(mainObject.getString("details"));
@@ -153,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position,View convertView, ViewGroup parent){
+        public View getView(final int position, View convertView, ViewGroup parent){
 
             ViewHolder holder = null;
 
@@ -199,6 +202,36 @@ public class MainActivity extends AppCompatActivity {
             holder.rocketName.setText(modelRocketsList.get(position).getNameOfRockets());
             holder.details.setText(modelRocketsList.get(position).getDetails());
             holder.dateUnix.setText(modelRocketsList.get(position).getUnixDate());
+
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent in=new Intent(Intent.ACTION_VIEW, Uri.parse(modelRocketsList.get(position).getLinkVideo()));
+                    startActivity(in);
+                }
+            });
+
+            holder.details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent in=new Intent(Intent.ACTION_VIEW, Uri.parse(modelRocketsList.get(position).getLinkVideo()));
+                    startActivity(in);
+                }
+            });
+            holder.dateUnix.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent in=new Intent(Intent.ACTION_VIEW, Uri.parse(modelRocketsList.get(position).getLinkVideo()));
+                    startActivity(in);
+                }
+            });
+            holder.rocketName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent in=new Intent(Intent.ACTION_VIEW, Uri.parse(modelRocketsList.get(position).getLinkVideo()));
+                    startActivity(in);
+                }
+            });
             return convertView;
         }
 
